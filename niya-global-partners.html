@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NIYA Global Partners — Connecting Emerging Producers to Canadian Markets</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600;700&family=Spectral:ital@1&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#211609;
+    --parchment:#ECE3CF;
+    --parchment-2:#E2D6B8;
+    --espresso:#3B2417;
+    --espresso-deep:#2A1810;
+    --amber:#B4723A;
+    --amber-deep:#8F5A2C;
+    --sage:#57634A;
+    --sage-light:#8A9678;
+    --cream-line: rgba(33,22,9,0.14);
+    --max: 1160px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--parchment);
+    color:var(--ink);
+    font-family:'Public Sans', sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{
+    font-family:'Spectral', serif;
+    font-weight:600;
+    color:var(--espresso-deep);
+    margin:0;
+  }
+  p{margin:0;}
+  a{color:inherit;}
+  img,svg{display:block;max-width:100%;}
+
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 32px;}
+
+  :focus-visible{outline:2px solid var(--amber-deep); outline-offset:3px;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(236,227,207,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--cream-line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:20px 32px;
+    max-width:var(--max); margin:0 auto;
+  }
+  .brand{
+    display:flex; align-items:baseline; gap:10px;
+    font-family:'Spectral', serif; font-weight:600; font-size:21px;
+    color:var(--espresso-deep); text-decoration:none;
+    letter-spacing:0.01em;
+  }
+  .brand .mark{
+    width:11px; height:11px; border-radius:50%;
+    background:var(--amber); display:inline-block; margin-right:2px;
+  }
+  .navlinks{display:flex; gap:34px; list-style:none; margin:0; padding:0;}
+  .navlinks a{
+    text-decoration:none; font-size:15px; color:var(--espresso);
+    border-bottom:1px solid transparent; padding-bottom:3px;
+    transition:border-color .2s ease, color .2s ease;
+  }
+  .navlinks a:hover{border-color:var(--amber-deep); color:var(--espresso-deep);}
+  .nav-cta{
+    background:var(--espresso-deep); color:var(--parchment);
+    padding:10px 20px; border-radius:2px; text-decoration:none;
+    font-size:14.5px; font-weight:500; white-space:nowrap;
+    transition:background .2s ease;
+  }
+  .nav-cta:hover{background:var(--amber-deep);}
+  .navtoggle{display:none;}
+
+  @media (max-width:860px){
+    .navlinks{display:none;}
+    .nav{padding:16px 20px;}
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding:76px 0 96px;
+    border-bottom:1px solid var(--cream-line);
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:1.05fr 0.95fr; gap:56px; align-items:center;
+  }
+  .kicker{
+    font-size:14.5px; color:var(--sage); font-weight:600;
+    margin-bottom:18px; display:block;
+  }
+  .hero h1{
+    font-size:clamp(34px, 4.4vw, 52px);
+    line-height:1.12;
+    letter-spacing:-0.01em;
+    max-width:16ch;
+  }
+  .hero-sub{
+    margin-top:22px; font-size:18px; color:#3E2E1E; max-width:46ch; line-height:1.65;
+  }
+  .hero-ctas{display:flex; gap:14px; margin-top:34px; flex-wrap:wrap;}
+  .btn{
+    display:inline-block; padding:13px 24px; border-radius:2px;
+    text-decoration:none; font-size:15px; font-weight:500;
+    transition:transform .18s ease, background .2s ease, border-color .2s ease;
+  }
+  .btn-primary{background:var(--espresso-deep); color:var(--parchment);}
+  .btn-primary:hover{background:var(--amber-deep); transform:translateY(-1px);}
+  .btn-ghost{border:1px solid var(--espresso); color:var(--espresso-deep);}
+  .btn-ghost:hover{border-color:var(--amber-deep); color:var(--amber-deep); transform:translateY(-1px);}
+
+  .stat-row{display:flex; gap:34px; margin-top:44px; flex-wrap:wrap;}
+  .stat{border-left:2px solid var(--amber); padding-left:14px;}
+  .stat .num{font-family:'Spectral',serif; font-size:22px; color:var(--espresso-deep); font-weight:600;}
+  .stat .lbl{font-size:13.5px; color:var(--sage); margin-top:3px;}
+
+  .route-card{
+    background:var(--espresso-deep);
+    border-radius:4px;
+    padding:38px 30px 30px;
+    position:relative;
+    overflow:hidden;
+  }
+  .route-card svg{width:100%; height:auto;}
+  .route-caption{
+    color:var(--parchment-2); font-size:13.5px; margin-top:16px;
+    display:flex; justify-content:space-between; opacity:0.85;
+  }
+
+  #routeline{
+    stroke-dasharray:420; stroke-dashoffset:420;
+    animation:draw 1.6s ease forwards .3s;
+  }
+  @keyframes draw{ to{stroke-dashoffset:0;} }
+  @media (prefers-reduced-motion: reduce){
+    #routeline{stroke-dashoffset:0; animation:none;}
+  }
+
+  @media (max-width:920px){
+    .hero-grid{grid-template-columns:1fr; gap:40px;}
+    .hero h1{max-width:none;}
+  }
+
+  /* ---------- Section shells ---------- */
+  section{padding:88px 0;}
+  .section-head{max-width:640px; margin-bottom:56px;}
+  .section-head h2{font-size:clamp(26px,3vw,34px); line-height:1.25;}
+  .section-head p{margin-top:14px; font-size:16.5px; color:#4A3826; line-height:1.65;}
+  .divider{border:none; border-top:1px solid var(--cream-line); margin:0;}
+
+  /* ---------- Model flow ---------- */
+  .model{background:var(--parchment-2);}
+  .flow{
+    display:grid; grid-template-columns:1fr auto 1fr auto 1fr; align-items:stretch; gap:0;
+  }
+  .flow-node{
+    background:var(--parchment); border:1px solid var(--cream-line); border-radius:3px;
+    padding:30px 26px;
+  }
+  .flow-node.center{background:var(--espresso-deep); border-color:var(--espresso-deep);}
+  .flow-node.center h3, .flow-node.center p{color:var(--parchment-2);}
+  .flow-node .stage{font-size:13px; color:var(--sage); font-weight:600; margin-bottom:10px;}
+  .flow-node.center .stage{color:var(--amber);}
+  .flow-node h3{font-size:20px; margin-bottom:8px;}
+  .flow-node p{font-size:15px; color:#4A3826; line-height:1.55;}
+  .flow-arrow{
+    display:flex; align-items:center; justify-content:center; padding:0 14px;
+    color:var(--amber-deep); font-size:22px;
+  }
+  @media (max-width:860px){
+    .flow{grid-template-columns:1fr;}
+    .flow-arrow{transform:rotate(90deg); padding:10px 0;}
+  }
+
+  /* ---------- Two column value props ---------- */
+  .value-grid{display:grid; grid-template-columns:1fr 1fr; gap:2px; background:var(--cream-line);}
+  .value-col{background:var(--parchment); padding:44px 40px;}
+  .value-col h3{font-size:22px; margin-bottom:16px;}
+  .value-col .role{font-size:13.5px; color:var(--sage); font-weight:600; margin-bottom:10px; display:block;}
+  .value-col ul{margin:20px 0 0; padding:0; list-style:none;}
+  .value-col li{
+    font-size:15.5px; color:#4A3826; padding:10px 0 10px 22px; position:relative;
+    border-top:1px solid var(--cream-line);
+  }
+  .value-col li:before{
+    content:''; position:absolute; left:0; top:19px; width:7px; height:7px;
+    background:var(--amber); border-radius:50%;
+  }
+  @media (max-width:760px){ .value-grid{grid-template-columns:1fr;} }
+
+  /* ---------- Strategy quote ---------- */
+  .quote-band{
+    background:var(--espresso-deep); color:var(--parchment);
+    padding:96px 0;
+  }
+  .quote-band blockquote{
+    margin:0; font-family:'Spectral',serif; font-style:italic;
+    font-size:clamp(24px, 3.4vw, 36px); line-height:1.4; color:var(--parchment);
+    max-width:820px;
+  }
+  .quote-band .attrib{margin-top:26px; font-size:14.5px; color:var(--parchment-2); font-style:normal; font-family:'Public Sans',sans-serif;}
+
+  /* ---------- Strategy steps ---------- */
+  .steps{display:grid; grid-template-columns:repeat(4,1fr); gap:28px;}
+  .step{border-top:2px solid var(--amber); padding-top:18px;}
+  .step .n{font-family:'Spectral',serif; font-size:15px; color:var(--sage); font-weight:600; margin-bottom:10px;}
+  .step h4{font-size:17px; margin-bottom:8px; font-weight:600;}
+  .step p{font-size:14.5px; color:#4A3826; line-height:1.55;}
+  @media (max-width:860px){ .steps{grid-template-columns:1fr 1fr;} }
+  @media (max-width:560px){ .steps{grid-template-columns:1fr;} }
+
+  /* ---------- Team ---------- */
+  .team-grid{display:grid; grid-template-columns:1fr 1fr; gap:32px;}
+  .team-card{
+    background:var(--parchment-2); border-radius:3px; padding:36px 32px;
+    border-top:3px solid var(--sage);
+  }
+  .team-card h3{font-size:22px;}
+  .team-card .role{display:block; font-size:14px; color:var(--amber-deep); font-weight:600; margin-top:6px; margin-bottom:16px;}
+  .team-card p{font-size:15.5px; color:#4A3826; line-height:1.6;}
+  @media (max-width:760px){ .team-grid{grid-template-columns:1fr;} }
+
+  /* ---------- Closing / vision ---------- */
+  .vision{text-align:left;}
+  .vision-lines{max-width:560px;}
+  .vision-lines .line{
+    font-family:'Spectral',serif; font-size:26px; color:var(--espresso-deep);
+    padding:10px 0; border-bottom:1px solid var(--cream-line);
+  }
+  .vision-lines .line:last-child{border-bottom:none; color:var(--amber-deep); font-weight:600;}
+
+  /* ---------- Footer / contact ---------- */
+  footer{background:var(--espresso-deep); color:var(--parchment-2); padding:64px 0 36px;}
+  .footer-grid{display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:40px; padding-bottom:40px; border-bottom:1px solid rgba(236,227,207,0.15);}
+  footer h4{color:var(--parchment); font-size:15px; font-family:'Public Sans',sans-serif; font-weight:600; margin-bottom:16px;}
+  footer .brand-foot{font-family:'Spectral',serif; font-size:21px; color:var(--parchment); margin-bottom:14px;}
+  footer p{font-size:14.5px; line-height:1.6; color:var(--parchment-2); opacity:0.85; max-width:38ch;}
+  footer ul{list-style:none; margin:0; padding:0;}
+  footer li{margin-bottom:10px; font-size:14.5px;}
+  footer a{text-decoration:none; color:var(--parchment-2); opacity:0.9;}
+  footer a:hover{opacity:1; color:var(--amber);}
+  .foot-bottom{
+    display:flex; justify-content:space-between; padding-top:26px; font-size:13px; opacity:0.6; flex-wrap:wrap; gap:10px;
+  }
+  @media (max-width:760px){ .footer-grid{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a class="brand" href="#top"><span class="mark"></span>NIYA Global Partners</a>
+    <ul class="navlinks">
+      <li><a href="#model">Our model</a></li>
+      <li><a href="#why">Why NIYA</a></li>
+      <li><a href="#strategy">Strategy</a></li>
+      <li><a href="#team">Team</a></li>
+    </ul>
+    <a class="nav-cta" href="#contact">Get in touch</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="kicker">Canadian market-entry &amp; representation</span>
+        <h1>A bridge between Ethiopian producers and Canadian buyers.</h1>
+        <p class="hero-sub">NIYA Global Partners represents promising small and emerging businesses — starting with Ethiopian coffee and export-ready goods — and builds the relationships they need to reach Canadian customers.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#contact">Partner with NIYA</a>
+          <a class="btn btn-ghost" href="#model">See how it works</a>
+        </div>
+        <div class="stat-row">
+          <div class="stat"><div class="num">Ethiopia</div><div class="lbl">Initial producer market</div></div>
+          <div class="stat"><div class="num">Canada</div><div class="lbl">Target buyer market</div></div>
+          <div class="stat"><div class="num">One transaction</div><div class="lbl">at a time, proven first</div></div>
+        </div>
+      </div>
+
+      <div class="route-card">
+        <svg viewBox="0 0 460 300" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="70" cy="230" r="6" fill="#B4723A"/>
+          <text x="70" y="258" fill="#ECE3CF" font-family="Public Sans, sans-serif" font-size="13" text-anchor="middle">Ethiopia</text>
+          <text x="70" y="205" fill="#ECE3CF" opacity="0.7" font-family="Public Sans, sans-serif" font-size="11" text-anchor="middle">Producer</text>
+
+          <circle cx="230" cy="90" r="7" fill="#ECE3CF"/>
+          <text x="230" y="70" fill="#ECE3CF" font-family="Spectral, serif" font-size="15" text-anchor="middle">NIYA</text>
+
+          <circle cx="390" cy="230" r="6" fill="#8A9678"/>
+          <text x="390" y="258" fill="#ECE3CF" font-family="Public Sans, sans-serif" font-size="13" text-anchor="middle">Canada</text>
+          <text x="390" y="205" fill="#ECE3CF" opacity="0.7" font-family="Public Sans, sans-serif" font-size="11" text-anchor="middle">Buyer</text>
+
+          <path id="routeline" d="M70,230 Q150,120 230,90 Q310,120 390,230" fill="none" stroke="#B4723A" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <div class="route-caption">
+          <span>Producer &#8594; NIYA &#8594; Canadian buyer</span>
+          <span>The basic model</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODEL -->
+  <section class="model" id="model">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>The basic model is simple: producer, NIYA, buyer.</h2>
+        <p>We are not buying inexpensive goods overseas to resell at a markup. We represent selected producers and work to build their business in Canada — learning each company well enough to speak for it commercially.</p>
+      </div>
+
+      <div class="flow">
+        <div class="flow-node">
+          <span class="stage">Stage one</span>
+          <h3>The producer</h3>
+          <p>A small or emerging business — a coffee farm, food maker, textile workshop — with a quality product but no route to international customers.</p>
+        </div>
+        <div class="flow-arrow">&#8594;</div>
+        <div class="flow-node center">
+          <span class="stage">Stage two</span>
+          <h3>NIYA Global Partners</h3>
+          <p>We evaluate the product, pricing, capacity and reliability, then act as the producer's Canadian-facing commercial representative.</p>
+        </div>
+        <div class="flow-arrow">&#8594;</div>
+        <div class="flow-node">
+          <span class="stage">Stage three</span>
+          <h3>The Canadian buyer</h3>
+          <p>A retailer, roaster, distributor or importer who gets a credible, pre-evaluated opportunity — not a random product pitch.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section id="why">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>We create value on both sides of the relationship.</h2>
+        <p>NIYA only works if the producer gains real access to customers, and the Canadian buyer gets a product that makes commercial sense on its own terms.</p>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="value-grid">
+        <div class="value-col">
+          <span class="role">For the producer</span>
+          <h3>Keep producing. Let us build the Canadian market.</h3>
+          <ul>
+            <li>No need to hire a Canadian sales team or learn the market alone</li>
+            <li>A representative who understands your product and speaks for it in Canada</li>
+            <li>Introductions, samples, and negotiations handled on your behalf</li>
+            <li>You succeed when NIYA succeeds — the incentives are aligned</li>
+          </ul>
+        </div>
+        <div class="value-col">
+          <span class="role">For the Canadian buyer</span>
+          <h3>Opportunities that have already been vetted.</h3>
+          <ul>
+            <li>Quality, pricing, capacity and reliability evaluated before you hear about it</li>
+            <li>Clear commercial information: minimum orders, shipping, compliance, margin</li>
+            <li>One point of contact instead of navigating an unfamiliar supplier directly</li>
+            <li>Over time, a track record you can trust when NIYA brings the next opportunity</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <section class="quote-band">
+    <div class="wrap">
+      <blockquote>
+        "Our first objective is not to become a million-dollar company. Our first objective is to complete one legitimate transaction in which an international producer gains a Canadian customer because of NIYA."
+        <div class="attrib">That transaction proves the model. Then we repeat it.</div>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- STRATEGY -->
+  <section id="strategy">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Starting narrow, on purpose.</h2>
+        <p>We are not approaching hundreds of companies across dozens of countries. Ethiopian coffee and a small set of export-ready products are where we learn the model deeply before expanding it.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="n">01</div>
+          <h4>Identify producers</h4>
+          <p>Find promising Ethiopian producers with export potential and real production capacity.</p>
+        </div>
+        <div class="step">
+          <div class="n">02</div>
+          <h4>Evaluate rigorously</h4>
+          <p>Assess quality, pricing, documentation and reliability before agreeing to represent anyone.</p>
+        </div>
+        <div class="step">
+          <div class="n">03</div>
+          <h4>Validate demand</h4>
+          <p>Test genuine interest among Canadian buyers before committing money to inventory.</p>
+        </div>
+        <div class="step">
+          <div class="n">04</div>
+          <h4>Prove, then repeat</h4>
+          <p>Close one legitimate transaction, learn from it, and build the next relationship.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="model" id="team">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>A small team, where every contribution matters.</h2>
+        <p>At this stage, NIYA is deliberately lean. Two roles carry most of the day-to-day weight.</p>
+      </div>
+      <div class="team-grid">
+        <div class="team-card">
+          <h3>Shahin</h3>
+          <span class="role">Customer relations &amp; business development</span>
+          <p>Central to NIYA's communication with both sides — introducing NIYA professionally, understanding buyer needs, following up, and turning introductions into real commercial opportunities. This is relationship building, not customer service: people need to trust the person representing NIYA.</p>
+        </div>
+        <div class="team-card">
+          <h3>Raul</h3>
+          <span class="role">Financial management</span>
+          <p>Protects the financial health of every transaction — pricing, commissions, currency conversion, freight, duties, and cash flow. A transaction can generate large revenue and still be a bad deal if the costs are misunderstood, so financial discipline starts here.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISION -->
+  <section class="vision">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>What NIYA stands for.</h2>
+        <p>Opportunity through connection — for entrepreneurs separated from major markets by geography, and for Canadian businesses searching for new products worth carrying.</p>
+      </div>
+      <div class="vision-lines">
+        <div class="line">We want the producer to win.</div>
+        <div class="line">We want the Canadian buyer to win.</div>
+        <div class="line">When NIYA creates that relationship, NIYA wins too.</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="brand-foot">NIYA Global Partners</div>
+        <p>Connecting global producers to Canadian markets. Starting with Ethiopian coffee and export-ready goods, built one relationship at a time.</p>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#model">Our model</a></li>
+          <li><a href="#why">Why NIYA</a></li>
+          <li><a href="#strategy">Our strategy</a></li>
+          <li><a href="#team">Our team</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get in touch</h4>
+        <ul>
+          <li><a href="mailto:hello@niyaglobalpartners.com">hello@niyaglobalpartners.com</a></li>
+          <li>Alberta, Canada</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; 2026 NIYA Global Partners</span>
+      <span>Producer &#8594; NIYA &#8594; Canadian buyer</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
